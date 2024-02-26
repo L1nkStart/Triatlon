@@ -1,4 +1,3 @@
-<!-- Registro.html -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -10,15 +9,16 @@
 <body>
     <div class="container">
         <h1>Registro para Triatlón</h1>
-        <form id="registrationForm">
-            <div id="participantsContainer">
+        
+            <section  class="articles" id="participantsContainer">
                 <!-- Aquí se agregarán dinámicamente los campos de cada participante -->
-            </div>
+            </section>
+        <form id="registrationForm">
             <button type="button" onclick="agregarParticipante()">Agregar Participante</button>
             <button type="button" onclick="registrarParticipantes()">Registrar Participantes</button>
 
             <!-- Botón para empezar el triatlón -->
-            <button type="button" onclick="empezarTriatlon()">Empezar Triatlón</button>
+            <button type="button" onclick="empezarTriatlon()">Guardar</button>
         </form>
     </div>
     <script src="../scripts/registro.js"></script>

@@ -1,9 +1,10 @@
-// script.js
+let participantes = JSON.parse(localStorage.getItem("participantes")) || [];
+console.log(participantes)
+let num = 0;
 
-let participantes = [];
 
 function agregarParticipante() {
-    const participantNumber = participantes.length + 1;
+    const participantNumber = num + 1;
 
     const participantHtml = `
         <div class="participant">
@@ -35,14 +36,20 @@ function registrarParticipantes() {
         const edad = document.getElementById(`edad${index + 1}`).value;
 
         const participante = {
+            id: index + 1,
             cedula,
             nombre,
             municipio,
             edad,
+            startTime: '',
             caminata: { inicio: '', fin: '', tiempo: 0 },
             natacion: { inicio: '', fin: '', tiempo: 0 },
             ciclismo: { inicio: '', fin: '', tiempo: 0 },
-            descalificado: false
+            walkDistance: 0,
+            swimDistance: 0,
+            cycleDistance: 0,
+            reference: '',
+            disqualified: false
         };
 
         participantes.push(participante);
@@ -54,22 +61,40 @@ function registrarParticipantes() {
 
 function mostrarParticipantesEnPantalla() {
     const participantesList = participantes.map((participante, index) => `
-        <div>
-            <h3>Participante ${index + 1}</h3>
-            <p><strong>Cédula:</strong> ${participante.cedula}</p>
-            <p><strong>Nombre:</strong> ${participante.nombre}</p>
-            <p><strong>Municipio:</strong> ${participante.municipio}</p>
-            <p><strong>Edad:</strong> ${participante.edad}</p>
-        </div>
+            <article>
+                <div class="article-wrapper">
+                <figure>
+                    <img src="https://picsum.photos/id/1011/800/450" alt="" />
+                </figure>
+                <div class="article-body">
+                    <h3>Participante ${index + 1}</h3>
+                    <p><strong>Cédula:</strong> ${participante.cedula}</p>
+                    <p><strong>Nombre:</strong> ${participante.nombre}</p>
+                    <p><strong>Municipio:</strong> ${participante.municipio}</p>
+                    <p><strong>Edad:</strong> ${participante.edad}</p>
+                    <button onclick="deleteParticipant(${index + 1})">Eliminar</button>
+
+                </div>
+            </article>
+            
     `).join('');
 
     document.getElementById('participantsContainer').innerHTML = participantesList;
 }
 
+function deleteParticipant(index) {
+    // Eliminar el participante del array utilizando el índice
+    participantes.splice(index - 1, 1);
+
+    // Volver a mostrar la lista actualizada
+    mostrarParticipantesEnPantalla();
+}
+
 function empezarTriatlon() {
     // Redirigir a la página de seguimiento
-    window.location.href = "../pages/seguimiento.html";
+    window.location.href = "../index.html";
 
     // Pasar la lista de participantes a la página de seguimiento
     localStorage.setItem("participantes", JSON.stringify(participantes));
 }
+window.onload = mostrarParticipantesEnPantalla;
