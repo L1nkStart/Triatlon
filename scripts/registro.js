@@ -73,7 +73,6 @@ function mostrarParticipantesEnPantalla() {
                     <p><strong>Municipio:</strong> ${participante.municipio}</p>
                     <p><strong>Edad:</strong> ${participante.edad}</p>
                     <button onclick="deleteParticipant(${index + 1})">Eliminar</button>
-
                 </div>
             </article>
             

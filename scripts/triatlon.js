@@ -15,12 +15,23 @@ function mostrarDetallesDeParticipantes(participantes) {
     participantes.forEach((participante, index) => {
         const participantDetails = document.createElement('div');
         participantDetails.innerHTML = `
-            <h3>Participante ${index + 1}</h3>
-            <p><strong>Cédula:</strong> ${participante.cedula}</p>
-            <p><strong>Nombre:</strong> ${participante.nombre}</p>
-            <p><strong>Municipio:</strong> ${participante.municipio}</p>
-            <p><strong>Edad:</strong> ${participante.edad}</p>
-        `;
+        <article>
+            <div class="article-wrapper">
+            <figure>
+                <img src="https://picsum.photos/id/1011/800/450" alt="" />
+            </figure>
+            <div class="article-body">
+                <h3>Participante ${index + 1}</h3>
+                <p><strong>Cédula:</strong> ${participante.cedula}</p>
+                <p><strong>Nombre:</strong> ${participante.nombre}</p>
+                <p><strong>Municipio:</strong> ${participante.municipio}</p>
+                <p><strong>Edad:</strong> ${participante.edad}</p>
+                <button onclick="deleteParticipant(${index + 1})">Asistente</button>
+
+            </div>
+        </article>
+        
+`;
 
         participantsContainer.appendChild(participantDetails);
     });
