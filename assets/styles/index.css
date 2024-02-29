@@ -5,6 +5,9 @@
     flex-direction: row;
     width: 100%;
 }
+a{
+    text-decoration: none;
+}
 .card{
     width: 50%;
     height: 50%;

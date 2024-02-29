@@ -22,6 +22,17 @@ body {
   background-size: 50%;
   opacity: .8;
 }
+button{
+  margin: 10px;
+  transform: scale(100%);
+  transition: 0.4s ease-in-out;
+
+}
+button:hover{
+  background-color: #28666e;
+  transform: scale(120%);
+
+}
 
 .container {
     max-width: 80%;

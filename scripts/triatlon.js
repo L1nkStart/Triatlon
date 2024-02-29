@@ -57,6 +57,10 @@ function setMultiplier(value) {
     multiplier = value;
 }
 
+function back(){
+    window.location.href = "../index.html";
+}
+
 function empezarTriatlon() {
     //descalifica inacistentes
     descalificarInasistentes()
