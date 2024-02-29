@@ -1,19 +1,39 @@
-/* Estilos básicos para la presentación de las páginas */
-
 body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
+  font-weight: 600;
+  font-style: normal;
+  background-image: linear-gradient(rgb(65, 15, 7), rgb(187, 91, 91));
+  margin: 0;
+  padding: 0;
+  background-image: url('../background.webp');
+  background-color: #cccccc; 
+  height: 500px; 
+  background-position: fixed; 
+  background-repeat: repeat; 
+  background-size: cover; /
+}
+.loader {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background: url('../dracula.png') 50% 50% no-repeat rgba(255, 255, 255, 0.522);
+  background-size: 50%;
+  opacity: .8;
 }
 
 .container {
     max-width: 80%;
+    min-height: 85vh;
     margin: 50px auto;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
+    background-color: #ffffff;
+    box-shadow: 10px 15px 5px 5px   rgba(0, 0, 0, 0.615);
 }
 
 h1 {
@@ -118,6 +138,9 @@ article {
     text-decoration: none;
     color: #28666e;
   }
+  article div{
+    text-decoration: none;
+  }
   
   article a:focus {
     outline: 1px dotted #28666e;
@@ -133,7 +156,6 @@ article {
     transition: all 0.3s;
   }
   
-  /* using the has() relational pseudo selector to update our custom properties */
   article:has(:hover, :focus) {
     --img-scale: 1.1;
     --title-color: #28666e;
@@ -156,7 +178,7 @@ article {
     max-width: 1200px;
     margin-inline: auto;
     padding-inline: 24px;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 24px;
   }
   
@@ -198,4 +220,39 @@ article {
     position: absolute;
     white-space: nowrap; 
     width: 1px;
+  }
+
+
+  .participant-row{
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+  }
+  .participant-small-cell{
+    width: 5%;
+  }
+  .participant-large-cell{
+    width: 10%;
+  }
+  .t-header{
+    display: flex;
+    flex-direction: row;
+  }
+  #myProgress {
+    width: 100%;
+    background-color: grey;
+  }
+  
+  #myBar {
+    width: 1%;
+    height: 30px;
+    background-color: green;
+  }
+
+  .bar{
+    background-color: #4CAF50;
+    height: 20%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
   }

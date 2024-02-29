@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pre-Triatlón</title>
     <link rel="stylesheet" href="../assets/styles/styles.css">
+    <link rel="stylesheet" href="../assets/styles/check.css">
+
 </head>
 <body>
     <div class="container">
@@ -13,16 +15,15 @@
         <h2>Hora de Inicio</h2>
             <input id="initTime" type="time" step="1" value="00:00:00">
         </div>
+        <h2>Velocidad</h2>
         <div>
-            <h2>Velocidad</h2>
-                <button>Tiempo real</button>
-                <button>Aumentado</button>
-            </div>
+            <button id="bt1" onclick="setMultiplier(1000)">Tiempo real</button>
+            <button id="bt2" onclick="setMultiplier(1)">Aumentado</button>
+        </div>
+        
         <h2>Participantes</h2>
         <div class="articles" id="participantsContainer">
-            <!-- Aquí se mostrarán dinámicamente los detalles de cada participante durante el triatlón -->
         </div>
-        <!-- Botón para empezar el triatlón -->
         <button type="button" onclick="empezarTriatlon()">Empezar Triatlón</button>
     </div>
     <script src="../scripts/triatlon.js"></script>

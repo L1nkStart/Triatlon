@@ -1,19 +1,56 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Triatlón App</title>
     <link rel="stylesheet" href="assets/styles/styles.css">
+    <link rel="stylesheet" href="assets/styles/index.css">
+
+    <script type="text/javascript">
+        window.addEventListener("load", function() {
+            var loader = document.querySelector(".loader");
+            function hideLoader() {
+                loader.style.display = "none";
+            }
+            loader.addEventListener("transitionend", hideLoader);
+            setTimeout(function() {
+                loader.style.transition = "opacity 0.5s ease"; 
+                loader.style.opacity = "0";  
+            }, 500); 
+        });
+    </script>
+    
 </head>
 <body>
+    <div class="loader"></div>
     <div class="container">
-        <h1>Bienvenido al Triatlón</h1>
-        <p>Selecciona una opción:</p>
-        <ul>
-            <li><a href="pages/registro.html">Registro de Participantes</a></li>
-            <li><a href="pages/triatlon.html">Iniciar Triatlon</a></li>
-        </ul>
+        <h1>Bienvenido al Triatlón
+            Gobernación La Cava
+        </h1>
+        <h2>
+            Caminata 10Km, Natacion 10Km, Ciclismo 30Km
+        </h2>
+       <h2>
+            Selecciona una opción
+       </h2>
+       <div class="menu">
+        <div class="card">
+            <a href="./pages/registro.html" id="reg" class="container">
+                <div class="menu-text">Registrar Participantes</div>
+            </a>
+        </div>
+        <div class="card">
+            <a href="./pages/triatlon.html" id="ini" class="container">
+                <div class="menu-text">Iniciar Triatlón</div>
+            </a>
+        </div>
+    </div>
+    
     </div>
 </body>
 </html>
