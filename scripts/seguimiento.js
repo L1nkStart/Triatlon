@@ -118,7 +118,7 @@ function calculateFinishTime(startTime) {
 
 //La manzana
 function calculateRandomDistance(velocity) {
-    var random = Math.random() + 1.0000000001
+    var random = Math.random() * + 1.0000000001
     if(random == 1){
         return 'F'
 } else return random * velocity * multiplier; 
