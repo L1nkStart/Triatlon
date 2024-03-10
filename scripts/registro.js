@@ -46,7 +46,6 @@ function registrarParticipantes() {
         participantes.push(participante);
     });
     flag = 0
-    console.log(participantes)
     // Mostrar participantes en pantalla
     mostrarParticipantesEnPantalla();
 }

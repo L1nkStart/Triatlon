@@ -20,6 +20,7 @@ function startTriathlon() {
         participant.reference = new Date()
         participant.startTime = new Date(participant['caminata.inicio'])
         participant['caminata.inicio'] = new Date(participant['caminata.inicio']).toLocaleTimeString()
+        participant.tiempo = 0
 
         //Descalificados
         if(participant.disqualified){
@@ -55,8 +56,11 @@ function startTriathlon() {
 //La tierra
 function simulateDiscipline(participant) {
     const disqualified = participant.disqualified;
+
     if (!disqualified && !participant['caminata.fin']) {
         simulateDistance(participant, 'walk', participant.maxWalkDistance, participant.walkVelocity);
+        time(participant)
+
         if (participant.walkDistance >= participant.maxWalkDistance) {
             finishDiscipline(participant, 'caminata', 'natacion');
             return;
@@ -65,6 +69,8 @@ function simulateDiscipline(participant) {
 
     if (!disqualified && participant['caminata.fin'] && !participant['natacion.fin']) {
         simulateDistance(participant, 'swim', participant.maxSwimDistance, participant.swimVelocity);
+        time(participant)
+
         if (participant.swimDistance >= participant.maxSwimDistance) {
             finishDiscipline(participant, 'natacion', 'ciclismo');
             return;
@@ -73,6 +79,8 @@ function simulateDiscipline(participant) {
 
     if (!disqualified && participant['natacion.fin'] && !participant['ciclismo.fin']) {
         simulateDistance(participant, 'cycle', participant.maxCycleDistance, participant.cycleVelocity);
+        time(participant)
+
         if (participant.cycleDistance >= participant.maxCycleDistance) {
             finishDiscipline(participant, 'ciclismo');
         }
@@ -109,14 +117,16 @@ function finishDiscipline(participant, currentDiscipline, nextDiscipline) {
     }
 }
 
-//La serpiente
+function time(participant ) {
+    participant.tiempo += 1
+}
+
 function calculateFinishTime(startTime) {
     const currentTime = new Date()
     const elapsedTime = (currentTime.getTime() - startTime.getTime() - 100) / 1000; // Tiempo transcurrido en segundos.
     return elapsedTime
 }
 
-//La manzana
 function calculateRandomDistance(velocity) {
     var random = Math.random() * + 1.0000000001
     if(random == 1){
@@ -175,7 +185,7 @@ function displayTable() {
             <div class="participant-large-cell">${participant['natacion.inicio'] || '00:00:00'}</div>
             <div class="participant-large-cell">${participant['ciclismo.inicio'] || '00:00:00'}</div>
             <div class="participant-large-cell">${participant['ciclismo.fin'] || '00:00:00'}</div>
-            <div class="participant-large-cell">${totalTiempo}s</div>
+            <div class="participant-large-cell">${participant.tiempo}s</div>
             <div style="width: ${cantidad}px; background-color: ${color};" class="bar participant-large-cell">${totalDistance}m</div>
         `;
         participantDetails.appendChild(row);
